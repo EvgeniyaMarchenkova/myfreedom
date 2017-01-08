@@ -14,24 +14,18 @@
 </head>
 <body>
   <div class="container">
-    <div ng-controller="showConstantsController">
+    <div ng-controller="calculatorController">
       <div class="row">
-        <button type="button" class="btn btn-default" ng-click="showMathConst()">MATH</button>
-        <button type="button" class="btn btn-default" ng-click="showPhysConst()">CHEM</button>
-        <button type="button" class="btn btn-default" ng-click="showChemConst()">PHYS</button>
+        <button type="button" class="btn btn-default" ng-click="showArea(area)" ng-repeat="area in constants">{{area.$desc}}</button>
       </div>
       <div class="row">
-        <button type="button" class="btn btn-default" ng-repeat="x in arrConst" ng-click="writeConstant(x)">{{x[0]}}</button>
+        <button type="button" class="btn btn-default" ng-repeat="const in currentArea" ng-click="writeConstant(const)">{{const.desc}}</button>
       </div>
       <div class="row">
-        <input type="text" ng-model="input">
+        <input readonly type="text" ng-model="input"> = {{result}}
       </div>
       <div class="row">
-        <button type="button" class="btn btn-default">+</button>
-        <button type="button" class="btn btn-default">-</button>
-        <button type="button" class="btn btn-default">*</button>
-        <button type="button" class="btn btn-default">/</button>
-        <button type="button" class="btn btn-default">=</button>
+        <button type="button" class="btn btn-default" ng-click="writeOperation(op)" ng-repeat="op in operators">{{op}}</button>
 
       </div>
     </div>
@@ -52,7 +46,8 @@
   <script src="components/version/version.js"></script>
   <script src="components/version/version-directive.js"></script>
   <script src="components/version/interpolate-filter.js"></script>
-  <script src="factories/constantFactory.js"></script>
-  <script src="controllers/showConstantsController.js"></script>
+  <script src="factories/ConstantsFactory.js"></script>
+  <script src="factories/OperatorsFactory.js"></script>
+  <script src="controllers/CalculatorController.js"></script>
 </body>
 </html>
